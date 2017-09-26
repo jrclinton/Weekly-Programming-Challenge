@@ -17,15 +17,17 @@ public class CDSellers {
         Scanner scanThis = new Scanner(System.in);
         String[] info = scanThis.nextLine().split("\\s+");
         int cdsToSell = 0;
-        int[] cdInfo = new int[10000];
-            for(int counter=0;counter<Integer.parseInt(info[0])+Integer.parseInt(info[1]);counter++){
-                int someInt = Integer.parseInt(scanThis.next());
-                if(cdInfo!=null&&IntStream.of(cdInfo).anyMatch(num->num==someInt)){
+        int[] jack = new int[Integer.parseInt(info[0])];
+        for(int counter=0;counter<Integer.parseInt(info[0])+Integer.parseInt(info[1]);counter++){
+            if (counter < Integer.parseInt(info[0])){
+                jack[counter]=Integer.parseInt(scanThis.nextLine());
+            }else{
+                int someInt = Integer.parseInt(scanThis.nextLine());
+                if(IntStream.of(jack).anyMatch(num->num==someInt)){
                     cdsToSell++;
                 }
-                cdInfo[counter]=someInt;
             }
-            System.out.println(cdsToSell+"");
+        }
+        System.out.println(cdsToSell+"");
     }
-    
 }
